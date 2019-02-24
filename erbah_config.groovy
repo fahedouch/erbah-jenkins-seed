@@ -1,4 +1,4 @@
-class tinman3_config {
+class erbah_config {
     public static jenkins_credential = '4600f7bf-1853-49fb-b69b-f1c8bc1091ee'
     public static repo_name = 'erbah'
     public static git_url = 'github.com/fahedouch'
@@ -73,7 +73,7 @@ class tinman3_config {
          target_branch_regex: ''],
 
     // TinMan3 - Continuous
-        [name: 'TinMan3',
+        [name: 'erbah',
          repo_name: 'tina-manager-3',
          type: this.stage_continuous,
          cron_schedule: 'H 2 * * *',

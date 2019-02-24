@@ -1,9 +1,9 @@
 class tinman3_config {
     public static jenkins_credential = '4600f7bf-1853-49fb-b69b-f1c8bc1091ee'
-    public static repo_name = 'tina-manager-3'
-    public static git_url = 'gitlab.outscale.internal'
+    public static repo_name = 'erbah'
+    public static git_url = 'github.com/fahedouch'
     public static git_acct = 'git'
-    public static jenkins_label = 'tinman3'
+    public static jenkins_label = 'erbah'
 
     // Variables to help always use the same name for the stages
     public static stage_nightly = 'Nightly'
@@ -35,21 +35,21 @@ class tinman3_config {
      */
     public static projects = [
     // TinMan3 - Nightly
-        [name: 'TinMan3',
-         repo_name: 'tina-manager-3',
+        [name: 'erbah',
+         repo_name: 'erbah',
          type: this.stage_nightly,
          cron_schedule: 'H 2 * * *',
          branch: 'develop',
          sonar_branch: 'develop',
          warnings_publisher: true,
          unstable_quality_gates: true,
-         mail_list: 'jeremie.balagna-ranin@outscale.com',
+         mail_list: 'fahed.dorgaa@gmail.com',
          archive_artifacts: 'reports/**/*.xml',
          publish_rpm: true,
          failedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          skippedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          jenkins_options: '--nightly',
-         jenkins_label: 'tinman3',
+         jenkins_label: 'erbah',
          branch_filter_type: 'All',
          target_branch_regex: ''],
 
@@ -62,7 +62,7 @@ class tinman3_config {
          sonar_branch: 'merge_request',
          warnings_publisher: true,
          unstable_quality_gates: true,
-         mail_list: 'jeremie.balagna-ranin@outscale.com',
+         mail_list: 'fahed.dorgaa@gmail.coms',
          archive_artifacts: 'reports/**/*.xml',
          publish_rpm: true,
          failedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
@@ -81,32 +81,32 @@ class tinman3_config {
          sonar_branch: 'continuous',
          warnings_publisher: true,
          unstable_quality_gates: true,
-         mail_list: 'jeremie.balagna-ranin@outscale.com',
+         mail_list: 'fahed.dorgaa@gmail.coms',
          archive_artifacts: 'reports/**/*.xml',
          publish_rpm: true,
          failedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          skippedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          jenkins_options: '--continuous',
-         jenkins_label: 'tinman3',
+         jenkins_label: 'erbah',
          branch_filter_type: 'All',
          target_branch_regex: ''],
 
     // TinMan3 - Release
-        [name: 'TinMan3',
-         repo_name: 'tina-manager-3',
+        [name: 'erbah',
+         repo_name: 'erbah',
          type: this.stage_release,
          cron_schedule: 'H 2 * * *',
          branch: '*/master,*/release',
          sonar_branch: 'release',
          warnings_publisher: true,
          unstable_quality_gates: true,
-         mail_list: 'jeremie.balagna-ranin@outscale.com',
+         mail_list: 'fahed.dorgaa@gmail.com',
          archive_artifacts: 'reports/**/*.xml',
          publish_rpm: true,
          failedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          skippedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          jenkins_options: '--release',
-         jenkins_label: 'tinman3',
+         jenkins_label: 'erbah',
          branch_filter_type: 'All',
          target_branch_regex: '']
     ]

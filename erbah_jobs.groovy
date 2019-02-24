@@ -1,6 +1,6 @@
-import tinman3_config
+import erbah_config
 
-def sonarqube_config(node, String branch = null, String properties_file) {
+/*def sonarqube_config(node, String branch = null, String properties_file) {
     conf = new Node(null, 'hudson.plugins.sonar.SonarRunnerBuilder', [plugin: 'sonar'])
     if (!properties_file) {
         properties_file = 'sonar-project.properties'
@@ -13,17 +13,17 @@ def sonarqube_config(node, String branch = null, String properties_file) {
     }
     (conf / 'properties').setValue(properties_value)
     node.append(conf)
-}
+}*/
 
-tinman3_config.projects.each { project ->
+erbah_config.projects.each { project ->
     pipelineJob(project.name + '_' + project.type) {
         displayName(project.name + ' - ' + project.type)
         customWorkspace('/data/jenkins/workspace/' + project.name + '_' + project.type)
         triggers {
-            if (project.type == tinman3_config.stage_nightly) {
+            /*if (project.type == erbah_config.stage_nightly) {
                 cron ("00 00 * * *")
-            }
-            else if (project.type == tinman3_config.stage_continuous) {
+            }*/
+            if (project.type == erbah_config.stage_continuous) {
                 // Executed when push event occurs on develop
                 gitlabPush {
                     buildOnMergeRequestEvents(false)
@@ -36,7 +36,7 @@ tinman3_config.projects.each { project ->
                     //excludeBranches('')
                 }
             }
-            else if (project.type == tinman3_config.stage_merge_request) {
+            /*else if (project.type == erbah_config.stage_merge_request) {
                 // Executed when a merge request from a feature branch to develop occurs
                 gitlabPush {
                     buildOnMergeRequestEvents(true)
@@ -47,7 +47,7 @@ tinman3_config.projects.each { project ->
                     targetBranchRegex('develop')  // TODO To test - or 'feature'?
                 }
             }
-            else if (project.type == tinman3_config.stage_release) {
+            else if (project.type == erbah_config.stage_release) {
                 gitlabPush {
                     buildOnMergeRequestEvents(false)
                     buildOnPushEvents(true)
@@ -56,7 +56,7 @@ tinman3_config.projects.each { project ->
                     rebuildOpenMergeRequest('never')  // Can be useful?
                     targetBranchRegex('release')  // TODO To test
                 }
-            }
+            }*/
         }
         definition {
             cps {
@@ -64,16 +64,16 @@ tinman3_config.projects.each { project ->
                 if (project.jenkins_label) {
                     node_label = project.jenkins_label
                 } else {
-                    node_label = tinman3_config.jenkins_label
+                    node_label = erbah_config.jenkins_label
                 }
                 script(
-                    "stage_nightly = '$tinman3_config.stage_nightly'\n" +
-                    "stage_continuous = '$tinman3_config.stage_continuous'\n" +
-                    "stage_merge_request = '$tinman3_config.stage_merge_request'\n" +
-                    "stage_release = '$tinman3_config.stage_release'\n" +
-                    "jenkins_credential = '$tinman3_config.jenkins_credential'\n" +
-                    "git_url = '$tinman3_config.git_url'\n" +
-                    "git_acct = '$tinman3_config.git_acct'\n" +
+                    "stage_nightly = '$erbah_config.stage_nightly'\n" +
+                    "stage_continuous = '$erbah_config.stage_continuous'\n" +
+                    "stage_merge_request = '$erbah_config.stage_merge_request'\n" +
+                    "stage_release = '$erbah_config.stage_release'\n" +
+                    "jenkins_credential = '$erbah_config.jenkins_credential'\n" +
+                    "git_url = '$erbah_config.git_url'\n" +
+                    "git_acct = '$erbah_config.git_acct'\n" +
                     "name = '$project.name'\n" +
                     "repo_name = '$project.repo_name'\n" +
                     "type = '$project.type'\n" +
@@ -90,7 +90,7 @@ tinman3_config.projects.each { project ->
                     "target_branch_regex = '$project.target_branch_regex'\n" +
                     "node_label = '$node_label'\n" +
                     "\n\n" +
-                    readFileFromWorkspace("./TinMan3/tinman3_workflow.groovy")
+                    readFileFromWorkspace("erbah_workflow.groovy")
                 )
             }
         }

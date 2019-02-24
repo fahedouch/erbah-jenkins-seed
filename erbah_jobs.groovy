@@ -1,4 +1,4 @@
-def erbah_config = load 'erbah_config.groovy'
+import erbah_config
 /*def sonarqube_config(node, String branch = null, String properties_file) {
     conf = new Node(null, 'hudson.plugins.sonar.SonarRunnerBuilder', [plugin: 'sonar'])
     if (!properties_file) {

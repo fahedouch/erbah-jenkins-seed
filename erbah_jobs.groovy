@@ -1,3 +1,6 @@
+
+
+
 class erbah_config {
     public static jenkins_credential = '4600f7bf-1853-49fb-b69b-f1c8bc1091ee'
     public static repo_name = 'erbah'
@@ -137,16 +140,7 @@ erbah_config.projects.each { project ->
             }*/
             if (project.type == erbah_config.stage_continuous) {
                 // Executed when push event occurs on develop
-                githubPush {
-                    buildOnMergeRequestEvents(false)
-                    buildOnPushEvents(true)
-                    enableCiSkip(false)
-                    setBuildDescription(true)
-                    rebuildOpenMergeRequest('never')
-                    //includeBranches('develop')
-                    targetBranchRegex('develop')
-                    //excludeBranches('')
-                }
+                githubPush()
             }
             /*else if (project.type == erbah_config.stage_merge_request) {
                 // Executed when a merge request from a feature branch to develop occurs

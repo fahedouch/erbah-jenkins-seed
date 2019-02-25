@@ -58,7 +58,7 @@ class erbah_config {
              repo_name: 'tina-manager-3',
              type: this.stage_merge_request,
              cron_schedule: 'H 2 * * *',
-             branch: 'origin/${gitlabSourceBranch}',
+             branch: 'origin/${githubSourceBranch}',
              sonar_branch: 'merge_request',
              warnings_publisher: true,
              unstable_quality_gates: true,
@@ -137,7 +137,7 @@ erbah_config.projects.each { project ->
             }*/
             if (project.type == erbah_config.stage_continuous) {
                 // Executed when push event occurs on develop
-                gitlabPush {
+                githubPush {
                     buildOnMergeRequestEvents(false)
                     buildOnPushEvents(true)
                     enableCiSkip(false)
@@ -150,7 +150,7 @@ erbah_config.projects.each { project ->
             }
             /*else if (project.type == erbah_config.stage_merge_request) {
                 // Executed when a merge request from a feature branch to develop occurs
-                gitlabPush {
+                githubPush {
                     buildOnMergeRequestEvents(true)
                     buildOnPushEvents(false)
                     enableCiSkip(false)
@@ -160,7 +160,7 @@ erbah_config.projects.each { project ->
                 }
             }
             else if (project.type == erbah_config.stage_release) {
-                gitlabPush {
+                githubPush {
                     buildOnMergeRequestEvents(false)
                     buildOnPushEvents(true)
                     enableCiSkip(false)
@@ -239,9 +239,9 @@ sectionedView('UX - Erbah') {
             columns {
                 status()
                 weather()
-                coverageColumn {
+                /*coverageColumn {
                     type("Line coverage")
-                }
+                }*/
                 name()
                 lastSuccess()
                 lastFailure()

@@ -1,4 +1,4 @@
-def erbah_config = load pwd() + '/erbah_config.groovy'
+def erbah_config = load  '/var/jenkins_home/workspace/jenkins-seed/erbah_config.groovy'
 
 /*def sonarqube_config(node, String branch = null, String properties_file) {
     conf = new Node(null, 'hudson.plugins.sonar.SonarRunnerBuilder', [plugin: 'sonar'])

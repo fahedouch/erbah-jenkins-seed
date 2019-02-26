@@ -57,8 +57,8 @@ class erbah_config {
              target_branch_regex: ''],
 
             // TinMan3 - Merge Request
-            [name: 'TinMan3',
-             repo_name: 'tina-manager-3',
+            [name: 'erbah',
+             repo_name: 'erbah',
              type: this.stage_merge_request,
              cron_schedule: 'H 2 * * *',
              branch: 'origin/${githubSourceBranch}',
@@ -77,7 +77,7 @@ class erbah_config {
 
             // TinMan3 - Continuous
             [name: 'erbah',
-             repo_name: 'tina-manager-3',
+             repo_name: 'erbah',
              type: this.stage_continuous,
              cron_schedule: 'H 2 * * *',
              branch: 'develop',

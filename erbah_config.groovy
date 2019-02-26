@@ -55,7 +55,7 @@ class erbah_config {
 
     // TinMan3 - Merge Request
         [name: 'TinMan3',
-         repo_name: 'tina-manager-3',
+         repo_name: 'erbah',
          type: this.stage_merge_request,
          cron_schedule: 'H 2 * * *',
          branch: 'origin/${gitlabSourceBranch}',
@@ -68,13 +68,13 @@ class erbah_config {
          failedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          skippedThresholds: [unstable: 0, unstableNew: 0, failure: 15, failureNew: 15],
          jenkins_options: '--merge-request',
-         jenkins_label: 'tinman3',
+         jenkins_label: 'erbah',
          branch_filter_type: 'All',
          target_branch_regex: ''],
 
     // TinMan3 - Continuous
         [name: 'erbah',
-         repo_name: 'tina-manager-3',
+         repo_name: 'erbah',
          type: this.stage_continuous,
          cron_schedule: 'H 2 * * *',
          branch: 'develop',

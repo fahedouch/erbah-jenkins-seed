@@ -18,10 +18,10 @@ node(node_label) {
                 script: './scripts/dc-help.sh version',
                 returnStdout: true
             ).trim()
-            echo "Tina 3 Manager version: ${version}"
+            echo "Erbah version: ${version}"
         }
         stage('Build Environment') {
-            sh("./scripts/dc-help.sh setup_sonar_properties ${sonar_branch}")
+            //sh("./scripts/dc-help.sh setup_sonar_properties ${sonar_branch}")
             echo 'Create the container from the UX container...'
             sh('./scripts/dc-help.sh create')
             sh('./scripts/dc-help.sh start')

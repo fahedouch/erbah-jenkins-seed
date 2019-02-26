@@ -4,7 +4,7 @@
 class erbah_config {
     public static jenkins_credential = '4600f7bf-1853-49fb-b69b-f1c8bc1091ee'
     public static repo_name = 'erbah'
-    public static git_url = 'github.com/fahedouch'
+    public static git_url = 'github.com'
     public static git_acct = 'git'
     public static jenkins_label = 'erbah'
 

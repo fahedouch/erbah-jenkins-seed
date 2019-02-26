@@ -1,5 +1,3 @@
-
-
 node(node_label) {
     try {
         stage('Preparation') {
@@ -14,7 +12,7 @@ node(node_label) {
                          doGenerateSubmoduleConfigurations: false,
                          extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false]],
                          submoduleCfg: [],
-                         userRemoteConfigs: [[credentialsId: jenkins_credential, url: git_acct + '@' + git_url + ':ux/' + repo_name + '.git']]]
+                         userRemoteConfigs: [[credentialsId: jenkins_credential, url: git_acct + '@' + git_url + ':fahedouch/' + repo_name + '.git']]]
             version = sh (
                 script: './scripts/dc-help.sh version',
                 returnStdout: true

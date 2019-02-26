@@ -2,8 +2,8 @@ node(node_label) {
     try {
         stage('Preparation') {
             echo 'VM Status Checkup...'
-            shell('./TinMan3/vm-checkup.sh')
-            echo 'Get sources from Gitlab...'
+            shell('/workspace/jenkins-seed/vm-checkup.sh')
+            echo 'Get sources from GitHub...'
             checkout changelog: false,
                      poll: false,
                      scm: [
@@ -12,7 +12,8 @@ node(node_label) {
                          doGenerateSubmoduleConfigurations: false,
                          extensions: [[$class: 'SubmoduleOption', disableSubmodules: false, parentCredentials: true, recursiveSubmodules: true, reference: '', trackingSubmodules: false]],
                          submoduleCfg: [],
-                         userRemoteConfigs: [[credentialsId: jenkins_credential, url: git_acct + '@' + git_url + ':fahedouch/' + repo_name + '.git']]]
+                         userRemoteConfigs: [[url: git_acct + '@' + git_url + ':fahedouch/' + repo_name + '.git']]]
+            sh('chmod +x ./scripts/dc-help.sh')
             version = sh (
                 script: './scripts/dc-help.sh version',
                 returnStdout: true
@@ -85,7 +86,7 @@ node(node_label) {
         throw e
     }
     finally {
-        notifyBuild(currentBuild.result)
+        //notifyBuild(currentBuild.result)
         echo 'Stop and delete the container...'
         sh('./scripts/dc-help.sh stop')
         sh('./scripts/dc-help.sh delete')

@@ -14,6 +14,7 @@ node(node_label) {
                          submoduleCfg: [],
                          userRemoteConfigs: [[url: git_acct + '@' + git_url + ':fahedouch/' + repo_name + '.git']]]
             sh('chmod +x ./scripts/dc-help.sh')
+            sh('usermod -aG $USER')
             version = sh (
                 script: './scripts/dc-help.sh version',
                 returnStdout: true

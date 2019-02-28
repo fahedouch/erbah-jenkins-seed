@@ -23,22 +23,22 @@ node(node_label) {
         stage('Build Environment') {
             //sh("./scripts/dc-help.sh setup_sonar_properties ${sonar_branch}")
             echo 'Create the container from the UX container...'
-            sh('./scripts/dc-help.sh create')
-            sh('./scripts/dc-help.sh start')
-            sh('./scripts/dc-help.sh setup_conf')
+            sh('sudo ./scripts/dc-help.sh create')
+            sh('sudo ./scripts/dc-help.sh start')
+            sh('sudo ./scripts/dc-help.sh setup_conf')
             echo 'The build environment:'
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make clean"')
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make prepare"')
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make check_environment"')
-            sh('./scripts/dc-help.sh setup_db')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make clean"')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make prepare"')
+            sh('sudo ./scripts/dc-help.sh exec "c check_environment"')
+            sh('sudo ./scripts/dc-help.sh setup_db')
         }
         stage('Build Frontend') {
             echo 'Building Frontend...'
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make front_build"')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make front_build"')
         }
         stage('Build Backend') {
             echo 'Building Backend...'
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make back_build"')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make back_build"')
         }
         /* temp place for Sonar Qube */
         if (sonar_branch) {
@@ -49,24 +49,24 @@ node(node_label) {
         }
         stage('Test Frontend') {
             echo 'Testing Frontend...'
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make front_test"')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make front_test"')
         }
         stage('Test Backend') {
             echo 'Testing Backend...'
-            sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make back_test"')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make back_test"')
         }
         /* Here is the best place ever for SonarQube */
         /* Following steps are run only for releases */
         if (branch == 'release') {
             stage('Package Frontend') {
                 echo 'Packaging...'
-                sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make front_build"')
-                sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make front_dist"')
+                sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make front_build"')
+                sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make front_dist"')
             }
             stage('Package Backend') {
                 echo 'Packaging...'
-                sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make back_build"')
-                sh('./scripts/dc-help.sh exec "/home/ux/bin/ux-make back_dist"')
+                sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make back_build"')
+                sh('sudo ./scripts/dc-help.sh exec "/home/ux/bin/erbah-make back_dist"')
             }
             stage('Create RPMs') {
                 echo 'Creating the RPMs...'
@@ -74,10 +74,10 @@ node(node_label) {
                     script: './scripts/dc-help.sh release',
                     returnStdout: true
                 ).trim()
-                sh("./scripts/dc-help.sh exec \"/home/ux/bin/ux-make release ${release} rpm_build\"")
+                sh("sudo ./scripts/dc-help.sh exec \"/home/ux/bin/erbah-make release ${release} rpm_build\"")
             }
             stage('Publish') {
-                sh('./scripts/dc-help.sh publish')
+                sh('sudo ./scripts/dc-help.sh publish')
             }
         }
     }

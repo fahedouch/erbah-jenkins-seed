@@ -2,7 +2,6 @@
 
 
 class erbah_config {
-    public static jenkins_credential = '4600f7bf-1853-49fb-b69b-f1c8bc1091ee'
     public static repo_name = 'erbah'
     public static git_url = 'github.com'
     public static git_acct = 'git'
@@ -223,26 +222,5 @@ erbah_config.projects.each { project ->
     }*/
 }
 
-sectionedView('UX - Erbah') {
-    sections {
-        listView {
-            name("Erbah")
-            jobs {
-                regex('Erbah_.*')
-            }
-            columns {
-                status()
-                weather()
-                /*coverageColumn {
-                    type("Line coverage")
-                }*/
-                name()
-                lastSuccess()
-                lastFailure()
-                lastDuration()
-                lastBuildConsole()
-                buildButton()
-            }
-        }
-    }
-}
+
+

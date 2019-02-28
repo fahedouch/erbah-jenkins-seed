@@ -29,7 +29,7 @@ node(node_label) {
             echo 'The build environment:'
             sh('sudo ./scripts/dc-help.sh exec "/home/ux/dev/scripts/erbah-make clean"')
             sh('sudo ./scripts/dc-help.sh exec "/home/ux/dev/scripts/erbah-make prepare"')
-            sh('sudo ./scripts/dc-help.sh exec "c check_environment"')
+            sh('sudo ./scripts/dc-help.sh exec "/home/ux/dev/scripts/erbah-makes check_environment"')
             sh('sudo ./scripts/dc-help.sh setup_db')
         }
         stage('Build Frontend') {

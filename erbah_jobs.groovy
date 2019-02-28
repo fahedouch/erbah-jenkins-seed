@@ -36,7 +36,7 @@ class erbah_config {
      * - note_event:                Sentence send to Jenkins to rebuild the MR
      */
     public static projects = [
-            // TinMan3 - Nightly
+            // Erbah - Nightly
             [name: 'erbah',
              repo_name: 'erbah',
              type: this.stage_nightly,

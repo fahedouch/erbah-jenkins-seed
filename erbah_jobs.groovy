@@ -176,7 +176,6 @@ erbah_config.projects.each { project ->
                     "stage_continuous = '$erbah_config.stage_continuous'\n" +
                     "stage_merge_request = '$erbah_config.stage_merge_request'\n" +
                     "stage_release = '$erbah_config.stage_release'\n" +
-                    "jenkins_credential = '$erbah_config.jenkins_credential'\n" +
                     "git_url = '$erbah_config.git_url'\n" +
                     "git_acct = '$erbah_config.git_acct'\n" +
                     "name = '$project.name'\n" +

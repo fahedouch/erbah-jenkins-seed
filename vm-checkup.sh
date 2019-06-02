@@ -25,7 +25,7 @@ fi
 echo -e "\n\e[36m - docker-compose version\e[0m"
 if ! [ -x "$(command -v docker-compose)" ];
 then
-    echo -e "\e[31m   Need to install docker for running TINA v3 tests\e[0m\n"
+    echo -e "\e[31m   Need to install docker for running tests\e[0m\n"
     errors=1
 else
     docker-compose version

@@ -34,7 +34,7 @@ class erbah_config {
      * - note_event:                Sentence send to Jenkins to rebuild the MR
      */
     public static projects = [
-    // TinMan3 - Nightly
+    // Erbah - Nightly
         [name: 'erbah',
          repo_name: 'erbah',
          type: this.stage_nightly,
@@ -53,8 +53,8 @@ class erbah_config {
          branch_filter_type: 'All',
          target_branch_regex: ''],
 
-    // TinMan3 - Merge Request
-        [name: 'TinMan3',
+    // Erbah - Merge Request
+        [name: 'Erbah',
          repo_name: 'erbah',
          type: this.stage_merge_request,
          cron_schedule: 'H 2 * * *',
@@ -72,7 +72,7 @@ class erbah_config {
          branch_filter_type: 'All',
          target_branch_regex: ''],
 
-    // TinMan3 - Continuous
+    // Erbah - Continuous
         [name: 'erbah',
          repo_name: 'erbah',
          type: this.stage_continuous,
@@ -91,7 +91,7 @@ class erbah_config {
          branch_filter_type: 'All',
          target_branch_regex: ''],
 
-    // TinMan3 - Release
+    // Erbah - Release
         [name: 'erbah',
          repo_name: 'erbah',
          type: this.stage_release,
